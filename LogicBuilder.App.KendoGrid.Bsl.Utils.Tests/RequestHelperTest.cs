@@ -21,25 +21,22 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Threading.Tasks;
-using Telerik.SvgIcons;
 
 namespace LogicBuilder.App.KendoGrid.Bsl.Utils.Tests
 {
-    public class RequestHelperTest : IClassFixture<DatabaseFixture>
+    public class RequestHelperTest
     {
         static RequestHelperTest()
         {
             InitializeMapperConfiguration();
         }
 
-        public RequestHelperTest(DatabaseFixture databaseFixture)
+        public RequestHelperTest()
         {
-            this.databaseFixture = databaseFixture;
             Initialize();
         }
 
         #region Fields
-        private readonly DatabaseFixture databaseFixture;
         private static MapperConfiguration MapperConfiguration;
         private static IServiceProvider? serviceProvider;
         #endregion Fields
@@ -419,7 +416,7 @@ namespace LogicBuilder.App.KendoGrid.Bsl.Utils.Tests
                 (
                     options => options.UseSqlServer
                     (
-                        databaseFixture.GetConnectionString(GetType().Name),
+                        @$"Server=(localdb)\mssqllocaldb;Database={GetType().Name};ConnectRetryCount=0",
                         options => options.EnableRetryOnFailure()
                     ),
                     ServiceLifetime.Transient
