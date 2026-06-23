@@ -1,5 +1,10 @@
 # LogicBuilder.App.KendoGrid.Bsl.Utils
 
+[![CI](https://github.com/BpsLogicBuilder/LogicBuilder.App.KendoGrid.Bsl.Utils/actions/workflows/ci.yml/badge.svg)](https://github.com/BpsLogicBuilder/LogicBuilder.App.KendoGrid.Bsl.Utils/actions/workflows/ci.yml)
+[![CodeQL](https://github.com/BpsLogicBuilder/LogicBuilder.App.KendoGrid.Bsl.Utils/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/BpsLogicBuilder/LogicBuilder.App.KendoGrid.Bsl.Utils/actions/workflows/github-code-scanning/codeql)
+[![codecov](https://codecov.io/github/BpsLogicBuilder/LogicBuilder.App.KendoGrid.Bsl.Utils/graph/badge.svg?token=M4QEBV6UFJ)](https://codecov.io/github/BpsLogicBuilder/LogicBuilder.App.KendoGrid.Bsl.Utils)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=BpsLogicBuilder_LogicBuilder.App.KendoGrid.Bsl.Utils&metric=alert_status&token=9d4560f6225202d90474fcb0cb57fecc03661d69)](https://sonarcloud.io/summary/new_code?id=BpsLogicBuilder_LogicBuilder.App.KendoGrid.Bsl.Utils)
+
 A .NET library that provides utilities for dynamically generating and executing queries for Kendo UI Grid data sources with Entity Framework Core integration.
 
 ## Overview
