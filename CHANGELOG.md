@@ -1,0 +1,3 @@
+* 2026-06-23 - AB#155 - Unit tests and CI/CD workflows.
+* 2026-06-23 - Add project files.
+* 2026-06-23 - Add .gitattributes, .gitignore, README.md, and LICENSE.txt.
