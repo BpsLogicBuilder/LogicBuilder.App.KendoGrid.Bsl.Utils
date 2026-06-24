@@ -1,4 +1,5 @@
-* 2026-06-23 - AB#183: - Use tag instead of diget for mcr.microsoft.com/mssql/serve.
+* 2026-06-23 - AB#183: - Reset CI/CD package paths to use Unix-style paths.
+* 2026-06-23 - AB#183: - Use tag instead of diget for mcr.microsoft.com/mssql/server.
 * 2026-06-23 - AB#183: - Include flag --store-password-in-clear-text for Telerik package source.
 * 2026-06-23 - AB#183: - Changing workflow runners back to ubuntu-latest.
 * 2026-06-23 - AB#183: - Removing reference to config file.
