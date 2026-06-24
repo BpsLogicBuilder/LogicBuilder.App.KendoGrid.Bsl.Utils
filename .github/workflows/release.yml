@@ -12,7 +12,7 @@ env:
 jobs:
   test:
     name: Test
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     permissions:
       contents: read
       packages: read
@@ -29,7 +29,7 @@ jobs:
           dotnet-version: ${{ env.DOTNET_VERSION }}
 
       - name: Add Telerik Nuget source
-        run: dotnet nuget add source https://nuget.telerik.com/v3/index.json -n telerik -u ${{ env.TELERIK_USERNAME }} -p ${{ env.TELERIK_PASSWORD }} --configfile './NuGet.Config' --store-password-in-clear-text
+        run: dotnet nuget add source https://nuget.telerik.com/v3/index.json -n telerik -u ${{ env.TELERIK_USERNAME }} -p ${{ env.TELERIK_PASSWORD }}
         env:
           TELERIK_USERNAME: ${{ secrets.TELERIK_USERNAME }}
           TELERIK_PASSWORD: ${{ secrets.TELERIK_NUGET_KEY }}
@@ -50,7 +50,7 @@ jobs:
 
   publish-packages:
     name: Publish Package to GitHub Packages
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     if: github.repository_owner == 'BpsLogicBuilder'
     permissions:
       contents: read
@@ -72,7 +72,7 @@ jobs:
           NUGET_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Add Telerik Nuget source
-        run: dotnet nuget add source https://nuget.telerik.com/v3/index.json -n telerik -u ${{ env.TELERIK_USERNAME }} -p ${{ env.TELERIK_PASSWORD }} --configfile './NuGet.Config' --store-password-in-clear-text
+        run: dotnet nuget add source https://nuget.telerik.com/v3/index.json -n telerik -u ${{ env.TELERIK_USERNAME }} -p ${{ env.TELERIK_PASSWORD }}
         env:
           TELERIK_USERNAME: ${{ secrets.TELERIK_USERNAME }}
           TELERIK_PASSWORD: ${{ secrets.TELERIK_NUGET_KEY }}

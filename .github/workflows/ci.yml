@@ -14,7 +14,7 @@ env:
 jobs:
   test:
     name: Test
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     permissions:
       contents: read
       packages: read
@@ -77,7 +77,7 @@ jobs:
 
   publish-packages:
     name: Publish to GitHub Packages
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     if: github.repository_owner == 'BpsLogicBuilder'
     permissions:
       contents: read
