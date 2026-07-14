@@ -2,8 +2,6 @@
 using AutoMapper.Extensions.ExpressionMapping;
 using Kendo.Mvc.Infrastructure;
 using Kendo.Mvc.UI;
-using LogicBuilder.App.Common.Utils;
-using LogicBuilder.App.Common.Utils.Interfaces;
 using LogicBuilder.App.KendoGrid.Bsl.Business.Requests;
 using LogicBuilder.App.KendoGrid.Bsl.Utils.Interfaces;
 using LogicBuilder.App.KendoGrid.Bsl.Utils.Tests.AutoMapperProfiles;
@@ -423,8 +421,8 @@ namespace LogicBuilder.App.KendoGrid.Bsl.Utils.Tests
                     ),
                     ServiceLifetime.Transient
                 )
-                .AddTransient<IMappingOperations, MappingOperations>()
-                .AddTransient<IRequestHelper, RequestHelper>()
+                .AddAppUtilsMappingOperations()
+                .AddKendoGridBslUtilsServices()
                 .AddTransient<ISchoolStore, SchoolStore>()
                 .AddTransient<IContextRepository, SchoolRepository>()
                 .AddSingleton<AutoMapper.IConfigurationProvider>

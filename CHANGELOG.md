@@ -1,3 +1,5 @@
+* 2026-07-14 - AB#174: - Update NuGet packages.
+* 2026-07-14 - AB#174: - Referencing the consolidated LogicBuilder.App.Utils library.
 * 2026-06-23 - AB#183: - Reset CI/CD package paths to use Unix-style paths.
 * 2026-06-23 - AB#183: - Use tag instead of diget for mcr.microsoft.com/mssql/server.
 * 2026-06-23 - AB#183: - Include flag --store-password-in-clear-text for Telerik package source.

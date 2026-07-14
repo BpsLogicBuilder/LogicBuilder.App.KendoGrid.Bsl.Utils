@@ -1,9 +1,9 @@
 ﻿using Kendo.Mvc;
 using Kendo.Mvc.Infrastructure;
 using Kendo.Mvc.UI;
-using LogicBuilder.App.Common.Utils.Interfaces;
 using LogicBuilder.App.KendoGrid.Bsl.Business.Requests;
 using LogicBuilder.App.KendoGrid.Bsl.Utils.Interfaces;
+using LogicBuilder.App.Utils.Interfaces;
 using LogicBuilder.Data;
 using LogicBuilder.Domain;
 using LogicBuilder.EntityFrameworkCore.Repositories;
