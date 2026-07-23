@@ -42,6 +42,64 @@ namespace LogicBuilder.App.KendoGrid.Bsl.Utils.Tests
         #endregion Fields
 
         [Fact]
+        public async Task Get_course_ungrouped_with_aggregates_and_filter()
+        {
+            //arrange
+            KendoGridDataRequest request = new()
+            {
+                Options = new KendoGridDataSourceRequestOptions
+                {
+                    Aggregate = "credits-sum",
+                    Filter = "credits~eq~3",
+                    Group = null,
+                    Page = 1,
+                    Sort = null,
+                    PageSize = 5
+                },
+                ModelType = typeof(CourseModel).AssemblyQualifiedName,
+                DataType = typeof(Course).AssemblyQualifiedName,
+            };
+            IRequestHelper helper = serviceProvider!.GetRequiredService<IRequestHelper>();
+
+            //act
+            DataSourceResult result = await helper.GetData(request);
+
+            //assert
+            Assert.Equal(4, result.Total);
+            Assert.Equal(4, ((IEnumerable<CourseModel>)result.Data).Count());
+            Assert.Single(result.AggregateResults);
+        }
+
+        [Fact]
+        public async Task Get_course_ungrouped_with_aggregates_and_filter_with_no_data_returned()
+        {
+            //arrange
+            KendoGridDataRequest request = new()
+            {
+                Options = new KendoGridDataSourceRequestOptions
+                {
+                    Aggregate = "credits-sum",
+                    Filter = "credits~eq~0",
+                    Group = null,
+                    Page = 1,
+                    Sort = null,
+                    PageSize = 5
+                },
+                ModelType = typeof(CourseModel).AssemblyQualifiedName,
+                DataType = typeof(Course).AssemblyQualifiedName,
+            };
+            IRequestHelper helper = serviceProvider!.GetRequiredService<IRequestHelper>();
+
+            //act
+            DataSourceResult result = await helper.GetData(request);
+
+            //assert
+            Assert.Equal(0, result.Total);
+            Assert.Empty((IEnumerable<CourseModel>)result.Data);
+            Assert.Null(result.AggregateResults);
+        }
+
+        [Fact]
         public async Task Get_students_ungrouped_with_options_null()
         {
             //arrange
@@ -51,9 +109,11 @@ namespace LogicBuilder.App.KendoGrid.Bsl.Utils.Tests
                 DataType = typeof(Student).AssemblyQualifiedName,
             };
 
+            //act
             IRequestHelper helper = serviceProvider!.GetRequiredService<IRequestHelper>();
             DataSourceResult result = await helper.GetData(request);
 
+            //assert
             Assert.Equal(11, result.Total);
             Assert.Equal(11, ((IEnumerable<StudentModel>)result.Data).Count());
             Assert.Null(result.AggregateResults);
@@ -195,6 +255,35 @@ namespace LogicBuilder.App.KendoGrid.Bsl.Utils.Tests
             Assert.Equal(2, result.AggregateResults.Count());
             Assert.Equal("Count", result.AggregateResults.First().AggregateMethodName);
             Assert.Equal(11, (int)result.AggregateResults.First().Value);
+        }
+
+        [Fact]
+        public async Task Get_students_grouped_with_aggregates_and_no_items_returned()
+        {
+            //arrange
+            KendoGridDataRequest request = new()
+            {
+                Options = new KendoGridDataSourceRequestOptions
+                {
+                    Aggregate = "lastName-count~enrollmentDate-min",
+                    Filter = "lastName~eq~'Blah'",
+                    Group = "enrollmentDate-asc",
+                    Page = 1,
+                    Sort = null,
+                    PageSize = 5
+                },
+                ModelType = typeof(StudentModel).AssemblyQualifiedName,
+                DataType = typeof(Student).AssemblyQualifiedName,
+            };
+
+            //act
+            IRequestHelper helper = serviceProvider!.GetRequiredService<IRequestHelper>();
+            DataSourceResult result = await helper.GetData(request);
+
+            //assert
+            Assert.Equal(0, result.Total);
+            Assert.Empty((IEnumerable<AggregateFunctionsGroup>)result.Data);
+            Assert.Null(result.AggregateResults);
         }
 
         [Fact]

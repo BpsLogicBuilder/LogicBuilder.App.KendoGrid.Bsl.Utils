@@ -83,8 +83,8 @@ namespace LogicBuilder.App.KendoGrid.Bsl.Utils
             return new DataSourceResult
             {
                 Data = await GetData(),
-                AggregateResults = getAggregates
-                                    ? (await GetAggregateFunctionsGroup()).GetAggregateResults(request.Aggregates.SelectMany(a => a.Aggregates)) /*getAggregates is true*/
+                AggregateResults = getAggregates//The aggregate expression in GetAggregateFunctionsGroup() may return null
+                                    ? (await GetAggregateFunctionsGroup())?.GetAggregateResults(request.Aggregates.SelectMany(a => a.Aggregates)) /*getAggregates is true*/
                                     : null,
                 Total = await _contextRepository.QueryAsync<TModel, TData, int, int>(totalExp, selectExpandDefinition)
             };
@@ -118,8 +118,8 @@ namespace LogicBuilder.App.KendoGrid.Bsl.Utils
             return new DataSourceResult
             {
                 Data = await _contextRepository.QueryAsync<TModel, TData, IQueryable<TModel>, IQueryable<TData>>(ungroupedExp, selectExpandDefinition),
-                AggregateResults = getAggregates
-                                    ? (await GetAggregateFunctionsGroup()).GetAggregateResults(request.Aggregates.SelectMany(a => a.Aggregates)) /*getAggregates is true*/
+                AggregateResults = getAggregates//The aggregate expression in GetAggregateFunctionsGroup() may return null
+                                    ? (await GetAggregateFunctionsGroup())?.GetAggregateResults(request.Aggregates.SelectMany(a => a.Aggregates)) /*getAggregates is true*/
                                     : null,
                 Total = await _contextRepository.QueryAsync<TModel, TData, int, int>(totalExp, selectExpandDefinition)
             };

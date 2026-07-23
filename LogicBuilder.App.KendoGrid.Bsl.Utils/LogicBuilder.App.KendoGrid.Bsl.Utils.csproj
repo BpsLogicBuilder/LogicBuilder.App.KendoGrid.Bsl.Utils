@@ -13,7 +13,7 @@
 		<EmbedUntrackedSources>true</EmbedUntrackedSources>
 		<Description>This library takes a request for a Kendo Grid data source including entity and model types and specifications for paging, grouping and aggregation.  Related components dynamically generate and execute the queries, finally returning the data source result.</Description>
 		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-		<PackageReleaseNotes>First release.</PackageReleaseNotes>
+		<PackageReleaseNotes>Bug Fix: error when aggregates requested and no rows returned.</PackageReleaseNotes>
 		<PackageTags>linq expressions</PackageTags>
 		<Copyright>Copyright © BPS 2026</Copyright>
 		<RepositoryUrl>https://github.com/BpsLogicBuilder/LogicBuilder.App.KendoGrid.Bsl.Utils</RepositoryUrl>
