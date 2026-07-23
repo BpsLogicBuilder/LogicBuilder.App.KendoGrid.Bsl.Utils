@@ -1,3 +1,4 @@
+* 2026-07-23 - AB#201: Update release notes
 * 2026-07-23 - AB#201: Fix error when aggregates requested and no rows returned
 * 2026-07-14 - AB#174: - Update NuGet packages.
 * 2026-07-14 - AB#174: - Referencing the consolidated LogicBuilder.App.Utils library.
