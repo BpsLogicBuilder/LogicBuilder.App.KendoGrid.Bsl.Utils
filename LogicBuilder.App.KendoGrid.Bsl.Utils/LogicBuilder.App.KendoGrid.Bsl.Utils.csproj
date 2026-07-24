@@ -13,7 +13,7 @@
 		<EmbedUntrackedSources>true</EmbedUntrackedSources>
 		<Description>This library takes a request for a Kendo Grid data source including entity and model types and specifications for paging, grouping and aggregation.  Related components dynamically generate and execute the queries, finally returning the data source result.</Description>
 		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-		<PackageReleaseNotes>Bug Fix: error when aggregates requested and no rows returned.</PackageReleaseNotes>
+		<PackageReleaseNotes>Bug Fix: remove extra paging call in LINQ expression builder.</PackageReleaseNotes>
 		<PackageTags>linq expressions</PackageTags>
 		<Copyright>Copyright © BPS 2026</Copyright>
 		<RepositoryUrl>https://github.com/BpsLogicBuilder/LogicBuilder.App.KendoGrid.Bsl.Utils</RepositoryUrl>
@@ -39,8 +39,8 @@
     <PackageReference Include="LogicBuilder.App.KendoGrid.Bsl.Business" Version="1.0.1" />
     <PackageReference Include="LogicBuilder.App.Utils" Version="1.0.5" />
     <PackageReference Include="LogicBuilder.EntityFrameworkCore" Version="8.0.3" />
-    <PackageReference Include="LogicBuilder.Kendo.ExpressionExtensions" Version="8.0.1-alpha.0.3" />
-		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="10.0.300" PrivateAssets="All" />
+    <PackageReference Include="LogicBuilder.Kendo.ExpressionExtensions" Version="9.0.0" />
+		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="10.0.301" PrivateAssets="All" />
 		<PackageReference Include="MinVer" Version="7.0.0">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
