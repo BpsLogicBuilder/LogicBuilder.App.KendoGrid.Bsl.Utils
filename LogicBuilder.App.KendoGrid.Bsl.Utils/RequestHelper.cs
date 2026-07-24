@@ -91,9 +91,9 @@ namespace LogicBuilder.App.KendoGrid.Bsl.Utils
 
             async Task<IEnumerable> GetData()
             {
-                var groupByExpressions = request.CreateGroupedByQueryExpressions<TModel>();
-                IQueryable<TModel> pagedQuery = await _contextRepository.QueryAsync<TModel, TData, IQueryable<TModel>, IQueryable<TData>>(groupByExpressions.PagingExpression, selectExpandDefinition);
-                return groupByExpressions.GroupByExpression.Compile()(pagedQuery);
+                var groupByExpressions = request.CreateGroupingQueryExpressions<TModel>();
+                IQueryable<TModel> pagedQuery = await _contextRepository.QueryAsync<TModel, TData, IQueryable<TModel>, IQueryable<TData>>(groupByExpressions.UngroupedUnpagedExpression, selectExpandDefinition);
+                return groupByExpressions.PagedGroupedExpression.Compile()(pagedQuery);
             }
 
             async Task<AggregateFunctionsGroup> GetAggregateFunctionsGroup()

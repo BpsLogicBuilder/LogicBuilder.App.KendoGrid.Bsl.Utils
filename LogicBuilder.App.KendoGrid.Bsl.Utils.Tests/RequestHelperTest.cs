@@ -258,6 +258,97 @@ namespace LogicBuilder.App.KendoGrid.Bsl.Utils.Tests
         }
 
         [Fact]
+        public async Task Get_students_grouped_by_first_name_with_aggregates_second_page()
+        {
+            //arrange
+            KendoGridDataRequest request = new()
+            {
+                Options = new KendoGridDataSourceRequestOptions
+                {
+                    Aggregate = "lastName-count~enrollmentDate-min",
+                    Filter = null,
+                    Group = "firstName-asc",
+                    Page = 2,
+                    Sort = null,
+                    PageSize = 5
+                },
+                ModelType = typeof(StudentModel).AssemblyQualifiedName,
+                DataType = typeof(Student).AssemblyQualifiedName,
+            };
+
+            //act
+            IRequestHelper helper = serviceProvider!.GetRequiredService<IRequestHelper>();
+            DataSourceResult result = await helper.GetData(request);
+
+            //assert
+            Assert.Equal(11, result.Total);
+            Assert.Equal(5, ((IEnumerable<AggregateFunctionsGroup>)result.Data).Count());
+            Assert.Equal(2, result.AggregateResults.Count());
+            Assert.Equal("Count", result.AggregateResults.First().AggregateMethodName);
+            Assert.Equal(11, (int)result.AggregateResults.First().Value);
+        }
+
+        [Fact]
+        public async Task Get_courses_grouped_by_department_with_aggregates()
+        {
+            KendoGridDataRequest request = new()
+            {
+                Options = new KendoGridDataSourceRequestOptions
+                {
+                    Aggregate = "title-count~credits-min",
+                    Filter = null,
+                    Group = "departmentName-asc",
+                    Page = 1,
+                    Sort = null,
+                    PageSize = 10
+                },
+                ModelType = typeof(CourseModel).AssemblyQualifiedName,
+                DataType = typeof(Course).AssemblyQualifiedName,
+            };
+
+            //act
+            IRequestHelper helper = serviceProvider!.GetRequiredService<IRequestHelper>();
+            DataSourceResult result = await helper.GetData(request);
+
+            //assert
+            Assert.Equal(7, result.Total);
+            Assert.Equal(4, ((IEnumerable<AggregateFunctionsGroup>)result.Data).Count());
+            Assert.Equal(2, result.AggregateResults.Count());
+            Assert.Equal("Count", result.AggregateResults.First().AggregateMethodName);
+            Assert.Equal(7, (int)result.AggregateResults.First().Value);
+        }
+
+        [Fact]
+        public async Task Get_courses_grouped_by_department_with_aggregates_second_page()
+        {
+            KendoGridDataRequest request = new()
+            {
+                Options = new KendoGridDataSourceRequestOptions
+                {
+                    Aggregate = "title-count~credits-min",
+                    Filter = null,
+                    Group = "departmentName-asc",
+                    Page = 2,
+                    Sort = null,
+                    PageSize = 3
+                },
+                ModelType = typeof(CourseModel).AssemblyQualifiedName,
+                DataType = typeof(Course).AssemblyQualifiedName,
+            };
+
+            //act
+            IRequestHelper helper = serviceProvider!.GetRequiredService<IRequestHelper>();
+            DataSourceResult result = await helper.GetData(request);
+
+            //assert
+            Assert.Equal(7, result.Total);
+            Assert.Equal(2, ((IEnumerable<AggregateFunctionsGroup>)result.Data).Count());
+            Assert.Equal(2, result.AggregateResults.Count());
+            Assert.Equal("Count", result.AggregateResults.First().AggregateMethodName);
+            Assert.Equal(7, (int)result.AggregateResults.First().Value);
+        }
+
+        [Fact]
         public async Task Get_students_grouped_with_aggregates_and_no_items_returned()
         {
             //arrange
