@@ -1,3 +1,4 @@
+* 2026-07-24 - AB#204: Fix duplicate paging call in LINQ expression builder.
 * 2026-07-23 - AB#201: Update release notes
 * 2026-07-23 - AB#201: Fix error when aggregates requested and no rows returned
 * 2026-07-14 - AB#174: - Update NuGet packages.
